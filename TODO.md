@@ -20,11 +20,21 @@
 ## BACK END
 
 - [ ] Store user created tasks in DB
-  - [ ] weekend-to-do-app
+  - [x] weekend-to-do-app
 - [ ] task completion should be stored on DB
 - [ ] Delete removes from DB
 
-Maybe create two tables, one to keep a list of our projects and a second that keeps a list of tasks for said project
+We will attempt to hold this data with two tables, one to keep a list of our projects and a second that keeps a list of tasks for said project.
+
+BASE MODE
+
+| tasks table         |
+| ------------------- |
+| id                  |
+| task (VARCHAR(256)) |
+| complete (BOOLEAN)  |
+
+STRETCH
 
 | projects table                      |
 | ----------------------------------- |
