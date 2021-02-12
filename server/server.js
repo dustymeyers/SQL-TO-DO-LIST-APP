@@ -23,12 +23,56 @@ app.get('/tasks', function (req, res) {
     // Get back DB Results
     .then((dbRes) => {
       console.log(dbRes.rows);
+
       // send back each full row
       res.send(dbRes.rows);
     })
     // Or handle DB Error
     .catch((err) => {
       console.log(err);
+
+      res.sendStatus(500);
+    });
+});
+
+// POST /tasks
+// add a task
+app.post('/tasks', function (req, res) {
+  /**
+   * Query to DB should look like:
+   *
+   * INSERT INTO "tasks"
+   *    ("task")
+   * VALUES
+   *    ('This is a task I must finish.')
+   */
+  console.log(req.body);
+
+  // Declare a variable to hold our SQL query string
+  let queryTxt = `
+    INSERT INTO "tasks"
+      ("task")
+    VALUES
+      ($1);
+  `;
+
+  // Declare a variable to hold the string we want to send to DB
+  let queryArg = req.body.task;
+
+  // Query the DB to add task
+  pool
+    // use queryTxt and queryArg as message
+    .query(queryTxt, [queryArg])
+    // Get back DB Results
+    // Should just be an OK
+    .then(() => {
+      // Send an OK
+      res.sendStatus(201);
+    })
+    // Or hand DB Error
+    .catch((err) => {
+      console.log(err);
+      // send internal error
       res.sendStatus(500);
     });
 });
