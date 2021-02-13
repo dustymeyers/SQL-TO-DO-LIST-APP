@@ -5,11 +5,11 @@
 - [x] Form to input todo list tasks
   - [ ] Submits input to server
 - [ ] Render to DOM on task creation
-  - [ ] Delete Button
+  - [x] Delete Button
     - [ ] Removes it from DOM
-  - [ ] Mark as complete
+  - [x] Mark as complete
     - [ ] on completion, change the the visual of the task
-      - Could be background color change, checkbox, DECIDE ON ONe
+      - Could be background color change, checkbox, DECIDE ON ONE
 
 ### Required Styling
 
