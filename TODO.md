@@ -6,18 +6,18 @@
   - [x] Submits input to server
 - [x] Render to DOM on task creation
   - [x] Delete Button
-    - [ ] Removes it from DOM
+    - [x] Removes it from DOM
   - [x] Mark as complete
-    - [ ] Sends change in completion status to server
-    - [ ] on completion, change the the visual of the task
+    - [x] Sends change in completion status to server
+    - [x] on completion, change the the visual of the task
       - Could be background color change, checkbox, DECIDE ON ONE
 
 ### Required Styling
 
-- [ ] Background color
-- [ ] Font family
-- [ ] Font size
-- [ ] text color & or background color of tasks to show whether or not they have been completed
+- [x] Background color
+- [x] Font family
+- [x] Font size
+- [x] text color & or background color of tasks to show whether or not they have been completed
 
 ## BACK END
 

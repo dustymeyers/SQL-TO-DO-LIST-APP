@@ -10,63 +10,69 @@
     <script src="./scripts/client.js"></script>
   </head>
   <body>
-    <h1>My To Do List</h1>
-    <h2>Add a Task</h2>
-    <input type="text" id="task-in" placeholder="What to do?" />
-    <button id="submit-task">Submit</button>
-    <h3></h3>
-    <table id="task-table">
-      <thead>
-        <tr>
-          <th>Status</th>
-          <th>Tasks To Do</th>
-
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody id="task-table-body">
-        <!-- Sample table for framework
-        <tr>
-          <td class="task-out">Task 1</td>
-          <td class="complete-false">
-              Complete!
-              <button class="completion-submit" data-complete="false">
-                Not Complete
-              </button>
-          </td>
-          <td>
-            <button class="delete-button">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td class="task-out"><p>Task 3</p></td>
-          <td class="complete-true">
-            <p>
-              Not Complete...
-              <button class="completion-submit" data-complete="true">
-                Completed
-              </button>
-            </p>
-          </td>
-          <td>
-            <button class="delete-button">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td class="task-out"><p>Task 3</p></td>
-          <td class="complete-true">
-            <p>
-              Not Complete...
-              <button class="completion-submit" data-complete="true">
-                Completed
-              </button>
-            </p>
-          </td>
-          <td>
-            <button class="delete-button">Delete</button>
-          </td>
-        </tr> -->
-      </tbody>
-    </table>
+    <header>
+      <img src="./images/checkmark.png" alt="green check mark" />
+      <h1>Dusty's SQL To Do List APP</h1>
+    </header>
+    <main>
+      <h2>Add a Task</h2>
+      <form action="">
+        <input type="text" id="task-in" placeholder="What to do?" />
+        <input type="submit" id="submit-task" value="Submit" />
+      </form>
+      <h3>My To Do List</h3>
+      <table id="task-table">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Tasks To Do</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="task-table-body">
+          <!-- Sample table for framework
+          <tr>
+            <td class="task-out">Task 1</td>
+            <td class="complete-false">
+                Complete!
+                <button class="completion-submit" data-complete="false">
+                  Not Complete
+                </button>
+            </td>
+            <td>
+              <button class="delete-button">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="task-out"><p>Task 3</p></td>
+            <td class="complete-true">
+              <p>
+                Not Complete...
+                <button class="completion-submit" data-complete="true">
+                  Completed
+                </button>
+              </p>
+            </td>
+            <td>
+              <button class="delete-button">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="task-out"><p>Task 3</p></td>
+            <td class="complete-true">
+              <p>
+                Not Complete...
+                <button class="completion-submit" data-complete="true">
+                  Completed
+                </button>
+              </p>
+            </td>
+            <td>
+              <button class="delete-button">Delete</button>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+    </main>
   </body>
 </html>

@@ -1,3 +1,40 @@
 body {
-  background-color: dodgerblue;
+  background-color: #a6035c;
+  font-size: 2em;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header img {
+  width: 150px;
+  margin: 1em;
+}
+
+main {
+  width: 60%;
+  margin: auto;
+}
+
+table {
+  width: 100%;
+}
+
+/* Classes */
+.complete-status,
+.delete-cell {
+  display: flex;
+  justify-content: center;
+}
+
+.uncompleted-task-row {
+  background-color: white;
+}
+
+.completed-task-row {
+  background-color: greenyellow;
 }

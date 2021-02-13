@@ -127,7 +127,7 @@ app.delete('/tasks/:id', function (req, res) {
     // query DB with SQL String and set $1 to taskId
     .query(queryTxt, [taskId])
     .then((resDb) => {
-      console.log(`Task deleted with id: ${taskID}`);
+      console.log(`Task deleted with id: ${taskId}`);
       // get an OK back
       res.sendStatus(200);
     })

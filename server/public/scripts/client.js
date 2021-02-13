@@ -6,11 +6,14 @@ function readyOn() {
   // Render on load
   getTasks();
 
-  // Event Listener for task submission
+  // Event Listener for task submission button
   $(document).on('click', '#submit-task', submitTask);
 
-  // Event Listener for task complete
+  // Event Listener for task completion button
   $('#task-table-body').on('click', '.completion-submit', completeTask);
+
+  // Event listener for delete task button
+  $('#task-table-body').on('click', '.delete-button', deleteTask);
 }
 
 // get tasks from DB and render them to the DOM
@@ -28,55 +31,35 @@ function getTasks() {
       console.log('These are the tasks from DB', toDoList);
       // Loop through data received
       for (let task of toDoList) {
-        let completeButton;
+        let completeButton, trClass;
 
         // check if tasks are complete
         // if false give option to complete
         // if true show completed
         if (!task.complete) {
-          completeButton = `<button class="completion-submit" data-id="${task.task_id}">Complete</button>`;
+          completeButton = `
+            <button class="completion-submit" data-id="${task.task_id}">
+              Complete
+            </button>
+          `;
+
+          trClass = 'class="uncompleted-task-row"';
         } else {
-          completeButton = 'Completed';
+          completeButton = `<img src="./images/checkmark.png" alt="Green check mark" height="30" />`;
+
+          trClass = 'class="completed-task-row"';
         }
 
         // append the dom
         $('#task-table-body').append(`
-          <tr>
+          <tr ${trClass}>
             <td class="complete-status">${completeButton}</td>
             <td class="task-out">${task.task}</td>
-            <td>
+            <td class="delete-cell">
               <button class="delete-button" data-id="${task.task_id}">Delete</button>
             </td>
           </tr>
         `);
-
-        // Check if task is complete or not
-        /* if (tasks[i].complete === true) {
-          $('#task-table-body').append(`
-        <tr>
-          <td class="complete-true">Task is Complete!</td>
-          <td class="task-out">${tasks[i].task}</td>
-          
-          <td>
-            <button class="delete-button">Delete</button>
-          </td>
-        </tr>
-      `);
-        } else {
-          $('#task-table-body').append(`
-          <tr>
-            <td class="complete-false">
-              <button class="completion-submit" data-complete="true">
-                Complete
-              </button>
-            </td>
-            <td class="task-out">${tasks[i].task}</td>
-            <td>
-              <button class="delete-button">Delete</button>
-            </td>
-          </tr>
-        
-        `); */
       }
     })
     .catch((err) => {
@@ -86,7 +69,10 @@ function getTasks() {
 }
 
 // Submit task
-function submitTask() {
+function submitTask(event) {
+  // prevent default load on form submission
+  event.preventDefault();
+
   console.log('in submitTask');
 
   // Bundle up the task to be added to DB
@@ -112,6 +98,7 @@ function submitTask() {
     });
 }
 
+// update task as complete
 function completeTask() {
   // set a value for taskId
   let taskId = $(this).data('id');
@@ -123,10 +110,33 @@ function completeTask() {
     url: `/tasks/complete/${taskId}`,
   })
     .then((response) => {
+      // render updated data
       getTasks();
     })
     .catch((err) => {
       console.log('Completion Error: ', err);
+
+      alert('Something went wrong..', err);
+    });
+}
+
+// delete task
+function deleteTask() {
+  // set a value for taskId
+  let taskId = $(this).data('id');
+
+  console.log('Deleted task with id:', taskId);
+
+  $.ajax({
+    method: 'DELETE',
+    url: `/tasks/${taskId}`,
+  })
+    .then((response) => {
+      // render updated data
+      getTasks();
+    })
+    .catch((err) => {
+      console.log('Deletion error: ', err);
 
       alert('Something went wrong..', err);
     });
