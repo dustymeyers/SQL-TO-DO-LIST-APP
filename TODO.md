@@ -2,13 +2,14 @@
 
 ## FRONT END
 
-- [ ] Form to input todo list tasks
+- [x] Form to input todo list tasks
+  - [ ] Submits input to server
+- [ ] Render to DOM on task creation
   - [ ] Delete Button
     - [ ] Removes it from DOM
   - [ ] Mark as complete
     - [ ] on completion, change the the visual of the task
       - Could be background color change, checkbox, DECIDE ON ONe
-- [ ] Render to DOM on task creation
 
 ### Required Styling
 
@@ -19,9 +20,11 @@
 
 ## BACK END
 
-- [ ] Store user created tasks in DB
+- [x] Store user created tasks in DB
   - [x] weekend-to-do-app
-- [ ] task completion should be stored on DB
+  - [x] PUT /tasks endpoint to add an item todo
+- [x] task completion should be stored on DB
+  - [x] GET /tasks endpoint to retrieve all tasks
 - [ ] Delete removes from DB
 
 We will attempt to hold this data with two tables, one to keep a list of our projects and a second that keeps a list of tasks for said project.

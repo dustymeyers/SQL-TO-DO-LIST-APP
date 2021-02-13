@@ -10,6 +10,63 @@
     <script src="./scripts/client.js"></script>
   </head>
   <body>
-    <h1>SQL To Do List</h1>
+    <h1>My To Do List</h1>
+    <h2>Add a Task</h2>
+    <input type="text" id="task-in" />
+    <button id="submit-task">Submit</button>
+    <h3></h3>
+    <table id="task-display">
+      <thead>
+        <tr>
+          <th>Tasks To Do</th>
+          <th>Status</th>
+          <th>Complete?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="task-out"><p>Task 1</p></td>
+          <td class="complete-false">
+            <p>
+              Complete!
+              <button class="completion-submit" data-complete="false">
+                Not Completed
+              </button>
+            </p>
+          </td>
+          <td>
+            <button class="delete-button">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td class="task-out"><p>Task 3</p></td>
+          <td class="complete-true">
+            <p>
+              Not Complete...
+              <button class="completion-submit" data-complete="true">
+                Completed
+              </button>
+            </p>
+          </td>
+          <td>
+            <button class="delete-button">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td class="task-out"><p>Task 3</p></td>
+          <td class="complete-true">
+            <p>
+              Not Complete...
+              <button class="completion-submit" data-complete="true">
+                Completed
+              </button>
+            </p>
+          </td>
+          <td>
+            <button class="delete-button">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>
