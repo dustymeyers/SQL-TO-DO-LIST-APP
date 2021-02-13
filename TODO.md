@@ -8,6 +8,7 @@
   - [x] Delete Button
     - [ ] Removes it from DOM
   - [x] Mark as complete
+    - [ ] Sends change in completion status to server
     - [ ] on completion, change the the visual of the task
       - Could be background color change, checkbox, DECIDE ON ONE
 

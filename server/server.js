@@ -76,3 +76,31 @@ app.post('/tasks', function (req, res) {
       res.sendStatus(500);
     });
 });
+
+// PUT /tasks/complete/:id
+// Mark a task as complete
+app.put('/tasks/complete/:id', function (req, res) {
+  // target the id value of :id
+  let taskId = req.params.id;
+  console.log(`Targeting task with ID: ${taskId}`);
+  // set a variable to hold the SQL string that will update the task
+  let queryTxt = `
+    UPDATE "tasks" 
+    SET "complete" = true 
+    WHERE "task_id" = $1;
+  `;
+
+  pool
+    // query the DB using the SQL string and pg will send it at this id
+    .query(queryTxt, [taskId])
+    // if DB successful takes data sends back OK
+    .then((resDb) => {
+      res.sendStatus(200);
+    })
+    // if something went wrong, sends back error
+    .catch((err) => {
+      console.log(err);
+
+      res.sendStatus(500);
+    });
+});
