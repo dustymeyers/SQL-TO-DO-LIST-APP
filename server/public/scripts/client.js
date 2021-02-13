@@ -2,10 +2,15 @@ $(document).ready(readyOn);
 
 function readyOn() {
   console.log("I'm so ready!");
+
   // Render on load
   getTasks();
+
   // Event Listener for task submission
   $(document).on('click', '#submit-task', submitTask);
+
+  // Event Listener for task complete
+  $('#task-table-body').on('click', '.completion-submit', completeTask);
 }
 
 // get tasks from DB and render them to the DOM
@@ -29,7 +34,7 @@ function getTasks() {
         // if false give option to complete
         // if true show completed
         if (!task.complete) {
-          completeButton = `<button class="completion-submit">Complete</button>`;
+          completeButton = `<button class="completion-submit" data-id="${task.task_id}">Complete</button>`;
         } else {
           completeButton = 'Completed';
         }
@@ -37,10 +42,10 @@ function getTasks() {
         // append the dom
         $('#task-table-body').append(`
           <tr>
-            <td class="complete-status" data-id${task.task_id}>${completeButton}</td>
+            <td class="complete-status">${completeButton}</td>
             <td class="task-out">${task.task}</td>
             <td>
-              <button class="delete-button" data-id=${task.task_id}>Delete</button>
+              <button class="delete-button" data-id="${task.task_id}">Delete</button>
             </td>
           </tr>
         `);
@@ -83,22 +88,46 @@ function getTasks() {
 // Submit task
 function submitTask() {
   console.log('in submitTask');
+
   // Bundle up the task to be added to DB
   let taskObject = {
     task: $('#task-in').val(),
   };
+
   // Have AJAX make a POST request
   $.ajax({
     type: 'POST',
     url: '/tasks',
     data: taskObject,
   })
-    .then(function (response) {
+    .then((response) => {
       $('#task-in').val('');
+
       getTasks();
     })
     .catch((err) => {
       console.log('error: ', err);
+
       alert('Something went wrong.');
+    });
+}
+
+function completeTask() {
+  // set a value for taskId
+  let taskId = $(this).data('id');
+
+  console.log('Completed task with id: ', taskId);
+
+  $.ajax({
+    method: 'PUT',
+    url: `/tasks/complete/${taskId}`,
+  })
+    .then((response) => {
+      getTasks();
+    })
+    .catch((err) => {
+      console.log('Completion Error: ', err);
+
+      alert('Something went wrong..', err);
     });
 }

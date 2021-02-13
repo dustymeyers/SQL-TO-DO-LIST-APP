@@ -27,8 +27,9 @@
   - [x] PUT /tasks/complete/:id to updated a specific task for completion
 - [x] task completion should be stored on DB
   - [x] GET /tasks endpoint to retrieve all tasks
-- [ ] Delete removes from DB
-  - [ ] DELETE /tasks/:id endpoint deletes the row from DB
+- [x] Delete removes from DB
+  - [x] DELETE /tasks/:id endpoint deletes the row from DB
+- [ ] Refactor server endpoints into a router
 
 We will attempt to hold this data with two tables, one to keep a list of our projects and a second that keeps a list of tasks for said project.
 
