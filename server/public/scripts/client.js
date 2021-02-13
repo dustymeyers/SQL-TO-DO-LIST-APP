@@ -25,13 +25,16 @@ function getTasks() {
       for (let task of toDoList) {
         let completeButton;
 
-        // check if tasks.
+        // check if tasks are complete
+        // if false give option to complete
+        // if true show completed
         if (!task.complete) {
           completeButton = `<button class="completion-submit">Complete</button>`;
         } else {
           completeButton = 'Completed';
         }
 
+        // append the dom
         $('#task-table-body').append(`
           <tr>
             <td class="complete-status" data-id${task.task_id}>${completeButton}</td>

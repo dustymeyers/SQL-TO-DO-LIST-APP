@@ -19,7 +19,7 @@ app.get('/tasks', function (req, res) {
   // Query the database
   pool
     // Select all rows from "tasks" table
-    .query('SELECT * FROM "tasks";')
+    .query(`SELECT * FROM "tasks" ORDER BY "task_id" ASC;`)
     // Get back DB Results
     .then((dbRes) => {
       console.log(dbRes.rows);
