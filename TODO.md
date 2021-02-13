@@ -3,8 +3,8 @@
 ## FRONT END
 
 - [x] Form to input todo list tasks
-  - [ ] Submits input to server
-- [ ] Render to DOM on task creation
+  - [x] Submits input to server
+- [x] Render to DOM on task creation
   - [x] Delete Button
     - [ ] Removes it from DOM
   - [x] Mark as complete

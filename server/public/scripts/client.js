@@ -19,23 +19,36 @@ function getTasks() {
     url: '/tasks',
   })
     // When we get our request back render to DOM
-    .then(function (tasks) {
-      console.log('These are the tasks from DB', tasks);
+    .then(function (toDoList) {
+      console.log('These are the tasks from DB', toDoList);
       // Loop through data received
-      for (let i = 0; i < tasks.length; i++) {
+      for (let task of toDoList) {
+        let completeButton;
+
+        // check if tasks.
+        if (!task.complete) {
+          completeButton = `<button class="completion-submit">Complete</button>`;
+        } else {
+          completeButton = 'Completed';
+        }
+
+        $('#task-table-body').append(`
+          <tr>
+            <td class="complete-status" data-id${task.task_id}>${completeButton}</td>
+            <td class="task-out">${task.task}</td>
+            <td>
+              <button class="delete-button" data-id=${task.task_id}>Delete</button>
+            </td>
+          </tr>
+        `);
+
         // Check if task is complete or not
-        if (tasks[i].complete === true) {
+        /* if (tasks[i].complete === true) {
           $('#task-table-body').append(`
         <tr>
-          <td class="task-out"><p>${tasks[i].task}</p></td>
-          <td class="complete-false">
-            <p>
-              Complete!
-              <button class="completion-submit" data-complete="false">
-                Not Completed
-              </button>
-            </p>
-          </td>
+          <td class="complete-true">Task is Complete!</td>
+          <td class="task-out">${tasks[i].task}</td>
+          
           <td>
             <button class="delete-button">Delete</button>
           </td>
@@ -44,22 +57,18 @@ function getTasks() {
         } else {
           $('#task-table-body').append(`
           <tr>
-            <td class="task-out"><p>${tasks[i].task}</p></td>
-            <td class="complete-true">
-              <p>
-                Not Complete...
-                <button class="completion-submit" data-complete="true">
-                  Completed
-                </button>
-              </p>
+            <td class="complete-false">
+              <button class="completion-submit" data-complete="true">
+                Complete
+              </button>
             </td>
+            <td class="task-out">${tasks[i].task}</td>
             <td>
               <button class="delete-button">Delete</button>
             </td>
           </tr>
         
-        `);
-        }
+        `); */
       }
     })
     .catch((err) => {
