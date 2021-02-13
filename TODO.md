@@ -23,10 +23,12 @@
 
 - [x] Store user created tasks in DB
   - [x] weekend-to-do-app
-  - [x] PUT /tasks endpoint to add an item todo
+  - [x] POST /tasks endpoint to add an item todo
+  - [x] PUT /tasks/complete/:id to updated a specific task for completion
 - [x] task completion should be stored on DB
   - [x] GET /tasks endpoint to retrieve all tasks
 - [ ] Delete removes from DB
+  - [ ] DELETE /tasks/:id endpoint deletes the row from DB
 
 We will attempt to hold this data with two tables, one to keep a list of our projects and a second that keeps a list of tasks for said project.
 

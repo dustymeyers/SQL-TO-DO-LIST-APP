@@ -1,11 +1,15 @@
 const express = require('express');
+
 const pool = require('./modules/pool');
+
 const app = express();
 
 const PORT = 5000;
 
 app.use(express.static('server/public'));
+
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
 
 app.listen(PORT, () => {
@@ -82,6 +86,7 @@ app.post('/tasks', function (req, res) {
 app.put('/tasks/complete/:id', function (req, res) {
   // target the id value of :id
   let taskId = req.params.id;
+
   console.log(`Targeting task with ID: ${taskId}`);
   // set a variable to hold the SQL string that will update the task
   let queryTxt = `
@@ -100,6 +105,35 @@ app.put('/tasks/complete/:id', function (req, res) {
     // if something went wrong, sends back error
     .catch((err) => {
       console.log(err);
+
+      res.sendStatus(500);
+    });
+});
+
+// DELETE /tasks/:id
+// Delete a task (row) from DB
+app.delete('/tasks/:id', function (req, res) {
+  // target the id value of :id
+  let taskId = req.params.id;
+
+  console.log(`Delete request for id: ${taskId}`);
+
+  let queryTxt = `
+    DELETE FROM "tasks"
+    WHERE "task_id" = $1;
+  `;
+
+  pool
+    // query DB with SQL String and set $1 to taskId
+    .query(queryTxt, [taskId])
+    .then((resDb) => {
+      console.log(`Task deleted with id: ${taskID}`);
+      // get an OK back
+      res.sendStatus(200);
+    })
+    // or resolve error
+    .catch((err) => {
+      console.log(`Error making database query ${queryTxt}`, err);
 
       res.sendStatus(500);
     });
