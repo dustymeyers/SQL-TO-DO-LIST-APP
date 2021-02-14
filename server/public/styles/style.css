@@ -27,8 +27,8 @@ table {
 /* Classes */
 .complete-status,
 .delete-cell {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 }
 
 .uncompleted-task-row {

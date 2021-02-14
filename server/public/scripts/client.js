@@ -38,7 +38,7 @@ function getTasks() {
         // if true show completed
         if (!task.complete) {
           completeButton = `
-            <button class="completion-submit" data-id="${task.task_id}">
+            <button class="completion-submit btn btn-success" data-id="${task.task_id}">
               Complete
             </button>
           `;
