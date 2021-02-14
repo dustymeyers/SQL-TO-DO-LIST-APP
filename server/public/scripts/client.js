@@ -132,22 +132,23 @@ function deleteTask() {
     dangerMode: true,
     buttons: true,
   }).then((willDelete) => {
-    $.ajax({
-      method: 'DELETE',
-      url: `/tasks/${taskId}`,
-    })
-      .then((response) => {
-        // render updated data
-        getTasks();
-      })
-      .catch((err) => {
-        console.log('Deletion error: ', err);
-
-        alert('Something went wrong..', err);
-      });
-
     if (willDelete) {
       swal('Deleted!', 'Your to do task has been deleted!', 'success');
+      $.ajax({
+        method: 'DELETE',
+        url: `/tasks/${taskId}`,
+      })
+        .then((response) => {
+          // render updated data
+          getTasks();
+        })
+        .catch((err) => {
+          console.log('Deletion error: ', err);
+
+          alert('Something went wrong..', err);
+        });
+    } else {
+      swal("You're task is safe.");
     }
   });
 
