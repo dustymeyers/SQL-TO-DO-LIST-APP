@@ -7,7 +7,7 @@ function readyOn() {
   getTasks();
 
   // Event Listener for task submission button
-  $(document).on('click', '#submit-task', submitTask);
+  $('form').submit('#submit-task', submitTask);
 
   // Event Listener for task completion button
   $('#task-table-body').on('click', '.completion-submit', completeTask);
