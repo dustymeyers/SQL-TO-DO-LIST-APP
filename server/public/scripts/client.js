@@ -45,17 +45,17 @@ function getTasks() {
 
           trClass = 'class="table-primary"';
         } else {
-          completeButton = `<img src="./images/checkmark.png" alt="Green check mark" height="30" />`;
+          completeButton = `<img src="./images/checkmark.png" alt="Green check mark"  />`;
 
           trClass = 'class="table-success"';
         }
 
         // append the dom
         $('#task-table-body').append(`
-          <tr ${trClass}>
-            <td class="complete-status">${completeButton}</td>
-            <td class="task-out">${task.task}</td>
-            <td class="delete-cell">
+          <tr scope="row" ${trClass}>
+            <td class="complete-status col">${completeButton}</td>
+            <td class="task-out col">${task.task}</td>
+            <td class="delete-cell col">
               <button class="delete-button btn btn-outline-danger" data-id="${task.task_id}">Delete</button>
             </td>
           </tr>

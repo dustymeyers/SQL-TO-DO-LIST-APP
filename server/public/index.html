@@ -16,37 +16,44 @@
     <script src="./scripts/client.js"></script>
   </head>
   <body class="container-fluid">
-    <header class="container">
+    <header class="container-fluid">
       <img src="./images/checkmark.png" alt="green check mark" />
       <h1 class="display-1">Dusty's SQL To Do List APP</h1>
     </header>
-    <main class="container">
-      <div class="container form-div">
+    <main class="container justify-content-center">
+      <div class="form-div">
         <h2 class="display-2">Add a Task</h2>
-        <form action="">
-          <input
-            type="text"
-            id="task-in"
-            placeholder="What to do?"
-            class="form-control form-control-lg"
-            required
-          />
-          <input
-            type="submit"
-            id="submit-task"
-            value="Submit"
-            class="btn btn-lg btn-success"
-          />
+
+        <form class="container" action="">
+          <div class="row">
+            <div class="col-10">
+              <input
+                type="text"
+                id="task-in"
+                placeholder="What to do?"
+                class="form-control form-control-lg"
+                required
+              />
+            </div>
+            <div class="col">
+              <input
+                type="submit"
+                id="submit-task"
+                value="Submit"
+                class="btn-lg btn-success col"
+              />
+            </div>
+          </div>
         </form>
       </div>
-      <div class="container-fluid">
+      <div class="container">
         <h3 class="display-3">My To Do List</h3>
-        <table class="table" id="task-table">
+        <table class="table container-fluid" id="task-table">
           <thead>
             <tr>
-              <th>Status</th>
-              <th>Tasks To Do</th>
-              <th>Delete</th>
+              <th scope="col">Status</th>
+              <th scope="col">Tasks To Do</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody id="task-table-body">
