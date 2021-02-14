@@ -7,7 +7,7 @@ function readyOn() {
   getTasks();
 
   // Event Listener for task submission button
-  $(document).on('click', '#submit-task', submitTask);
+  $('form').submit('#submit-task', submitTask);
 
   // Event Listener for task completion button
   $('#task-table-body').on('click', '.completion-submit', completeTask);
@@ -38,16 +38,16 @@ function getTasks() {
         // if true show completed
         if (!task.complete) {
           completeButton = `
-            <button class="completion-submit" data-id="${task.task_id}">
+            <button class="completion-submit btn btn-outline-success" data-id="${task.task_id}">
               Complete
             </button>
           `;
 
-          trClass = 'class="uncompleted-task-row"';
+          trClass = 'class="table-primary"';
         } else {
           completeButton = `<img src="./images/checkmark.png" alt="Green check mark" height="30" />`;
 
-          trClass = 'class="completed-task-row"';
+          trClass = 'class="table-success"';
         }
 
         // append the dom
@@ -56,7 +56,7 @@ function getTasks() {
             <td class="complete-status">${completeButton}</td>
             <td class="task-out">${task.task}</td>
             <td class="delete-cell">
-              <button class="delete-button" data-id="${task.task_id}">Delete</button>
+              <button class="delete-button btn btn-outline-danger" data-id="${task.task_id}">Delete</button>
             </td>
           </tr>
         `);

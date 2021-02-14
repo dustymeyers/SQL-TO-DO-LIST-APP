@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SQL To Do List</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./styles/style.css" />
     <script src="./vendors/jquery.js"></script>
     <script src="./scripts/client.js"></script>
@@ -12,25 +18,39 @@
   <body>
     <header>
       <img src="./images/checkmark.png" alt="green check mark" />
-      <h1>Dusty's SQL To Do List APP</h1>
+      <h1 class="display-1">Dusty's SQL To Do List APP</h1>
     </header>
     <main>
-      <h2>Add a Task</h2>
-      <form action="">
-        <input type="text" id="task-in" placeholder="What to do?" />
-        <input type="submit" id="submit-task" value="Submit" />
-      </form>
-      <h3>My To Do List</h3>
-      <table id="task-table">
-        <thead>
-          <tr>
-            <th>Status</th>
-            <th>Tasks To Do</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody id="task-table-body">
-          <!-- Sample table for framework
+      <div class="container form-div">
+        <h2 class="display-2">Add a Task</h2>
+        <form action="">
+          <input
+            type="text"
+            id="task-in"
+            placeholder="What to do?"
+            class="form-control form-control-lg"
+            required
+          />
+          <input
+            type="submit"
+            id="submit-task"
+            value="Submit"
+            class="btn btn-lg btn-success"
+          />
+        </form>
+      </div>
+      <div>
+        <h3 class="display-3">My To Do List</h3>
+        <table class="table" id="task-table" class="container-fluid">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Tasks To Do</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="task-table-body">
+            <!-- Sample table for framework
           <tr>
             <td class="task-out">Task 1</td>
             <td class="complete-false">
@@ -71,8 +91,14 @@
               <button class="delete-button">Delete</button>
             </td>
           </tr> -->
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
     </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
