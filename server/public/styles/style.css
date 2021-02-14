@@ -8,7 +8,6 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin-bottom: 1em;
 }
 
@@ -28,8 +27,14 @@ header img {
 }
 
 main {
-  width: 90%;
   margin: auto;
+}
+
+main h2 {
+  padding: 12px;
+}
+td img {
+  height: 30px;
 }
 
 /* Classes */
@@ -41,4 +46,8 @@ main {
 .delete-cell,
 th {
   text-align: center;
+}
+
+.task-in {
+  width: 75%;
 }
