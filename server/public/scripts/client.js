@@ -125,19 +125,31 @@ function deleteTask() {
   // set a value for taskId
   let taskId = $(this).data('id');
 
-  console.log('Deleted task with id:', taskId);
-
-  $.ajax({
-    method: 'DELETE',
-    url: `/tasks/${taskId}`,
-  })
-    .then((response) => {
-      // render updated data
-      getTasks();
+  swal({
+    title: "This can't be undone!",
+    text: "Are you sure you're ready to delete this?",
+    icon: 'warning',
+    dangerMode: true,
+    buttons: true,
+  }).then((willDelete) => {
+    $.ajax({
+      method: 'DELETE',
+      url: `/tasks/${taskId}`,
     })
-    .catch((err) => {
-      console.log('Deletion error: ', err);
+      .then((response) => {
+        // render updated data
+        getTasks();
+      })
+      .catch((err) => {
+        console.log('Deletion error: ', err);
 
-      alert('Something went wrong..', err);
-    });
+        alert('Something went wrong..', err);
+      });
+
+    if (willDelete) {
+      swal('Deleted!', 'Your to do task has been deleted!', 'success');
+    }
+  });
+
+  console.log('Deleted task with id:', taskId);
 }
